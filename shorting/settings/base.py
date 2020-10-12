@@ -1,7 +1,7 @@
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '7^9m$rhkp%%4_az*1wwibkm!lrnfi-5ybyw6v_wt3buihlefwp'
@@ -10,7 +10,6 @@ SECRET_KEY = '7^9m$rhkp%%4_az*1wwibkm!lrnfi-5ybyw6v_wt3buihlefwp'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -26,7 +25,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_extensions',
 
-    # Applicationa
+    # Applications
+    'shorts',
 ]
 
 MIDDLEWARE = [
@@ -46,7 +46,7 @@ TEMPLATES_DIR = BASE_DIR / 'templates'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,21 +67,19 @@ WSGI_APPLICATION = 'shorting.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'shorting',
+        'USER': 'shorting_user',
+        'PASSWORD': 'shorting_pass',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'shorting',
-#         'USER': 'shorting_user',
-#         'PASSWORD': 'shortingpassword',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
+
+REST_FRAMEWORK = {
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+}
 
 
 # Password validation
@@ -121,3 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+
+HOST_NAME = "http://localhost:9000/"
