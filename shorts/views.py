@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect
-from rest_framework import generics
+from rest_framework import generics, exceptions
 from rest_framework.response import Response
 from .serializers import ShortURLSerializer
 from .models import ShortURL
@@ -37,8 +37,15 @@ class ShortURLView(generics.RetrieveAPIView):
     serializer_class = ShortURLSerializer
     queryset = ShortURL.objects.all()
     lookup_field = "key"
+    schemes = ["http", "https", "ftp", "ftps"]
 
     def retrieve(self, request, *args, **kwargs):
+        url = ShortURL.objects.filter(key=kwargs.get("key"))
+        scheme = url.first().original_url.split("://")[0].lower()
+        if scheme not in self.schemes:
+            raise exceptions.ValidationError("Invalid URL", code='invalid')
+
         # get the response to get original_url
         response = super(ShortURLView, self).retrieve(request, *args, **kwargs)
+        # redirect to url
         return redirect(response.data.get("original_url"))
