@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Short URL
+{% endblock %}
+
+
+{% block content %}
+
+{% if not full_url %}
+    <div class="form_style">
+        <form action="." method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <h1>Paste the URL to be shortened</h1>
+                <input class="originl_url" type="text" name="original_url" maxlength="1000" required id="id_original_url" placeholder="Enter the link here">
+                <button type="submit" class="btn btn-primary button_url">Shorten URL</button>
+        </form>
+        <p style="margin-top: 30px;">Use our URL Shortener to create a shortened link making it easy to remember.</p>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <h1>Simple and fast URL shortener!</h1>
+        <p>
+            Your shortened URLs can be used in publications, advertisements, blogs, forums, e-mails, 
+            instant messages, and other locations. Track statistics for your business and projects 
+            by monitoring the number of hits from your URL with the click counter, 
+            you do not have to register.
+        </p>
+    </div>
+{% endif %}
+
+
+{% if full_url %}
+    <div class="form_style">
+        <h1>Your Shortened URL</h1>
+        <small>Copy the shortened link and share it in messages, texts, posts, websites and other locations. Create other <a href="/">Shorten URL</a></small>  <br>
+        <div class="form-group" id="url_div">
+            <input style="width: 300px;" type="text" value="{{full_url}}" id="url" />
+            <input type="button" value="Copy" onclick="Copy();" />
+        </div>
+        <h5>Long URL</h5>
+        <p>{{original_url}}</p>
+    </div>
+
+{% endif %}
+
+{% endblock %}
