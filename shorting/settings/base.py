@@ -122,4 +122,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [BASE_DIR / "statics"]
 
-HOST_NAME = "http://cuturls.live/"
+HOST_NAME = "https://cuturls.live/"
