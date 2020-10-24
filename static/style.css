@@ -43,10 +43,13 @@ ul {
     text-shadow: 1px 1px #51c2b8;
 }
 
-
-
-
-
+.shorten_url {
+    width: 300px;
+    /* height: 53px; */
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #3f2e4f;
+}
 
 
 
