@@ -1,42 +1,47 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{% block title %}{% endblock %}</title>
-    {% include "base/css.html" %}
-    <link rel="icon" href="{% static 'favicon.png' %}" type="image/png">
-  </head>
-  <body>
-    <!-- <nav class="navbar navbar-dark bg-dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}{% endblock %}</title>
+  {% include "base/css.html" %}
+  <link rel="icon" href="{% static 'favicon.png' %}" type="image/png">
+</head>
+
+<body>
+  <!-- <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="/">Shorting URL</a>
     </nav> -->
 
-    {% if messages %}
-    <ul class="alert alert-danger my-2" role="alert">
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+  {% if messages %}
+  <ul class="alert alert-danger my-2" role="alert">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
 
-    <a style="text-decoration: none;" href="/"><h1 class="logo">Short URL</h1></a>
+  <a style="text-decoration: none;" href="/">
+    <h1 class="logo">Short URL</h1>
+  </a>
 
-    <div class="container">{% block content %} {% endblock %}</div>
+  <div class="container">{% block content %} {% endblock %}</div>
 
-    <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 text-center">
-                        <div class="copyright-text">
-                            <p>Copyright &copy; 2020, All Right Reserved <a href="/">Short URL</a></p>
-                        </div>
-                    </div>
-                
-                </div>
-            </div>
-    </footer>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 text-center">
+          <div class="copyright-text">
+            <p>Copyright &copy; 2020, All Right Reserved <a href="/">Short URL</a></p>
+          </div>
+        </div>
 
-    {% include "base/js.html" %}
-  </body>
+      </div>
+    </div>
+  </footer>
+
+  {% include "base/js.html" %}
+</body>
+
 </html>
