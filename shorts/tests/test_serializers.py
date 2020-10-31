@@ -1,6 +1,6 @@
 from rest_framework.test import APITestCase
 from ..models import ShortURL
-from ..serializers import ShortURLSerializer
+from ..api.serializers import ShortURLSerializer
 
 class TestShortURL(APITestCase):
     def setUp(self):

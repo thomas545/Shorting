@@ -1,6 +1,6 @@
 from django.conf import settings
 from rest_framework import serializers
-from .models import ShortURL
+from ..models import ShortURL
 from .validators import URLValidator
 
 
@@ -11,7 +11,6 @@ class ShortURLSerializer(serializers.ModelSerializer):
     def get_full_url(self, obj):
         return (
             str(getattr(settings, "HOST_NAME", "http://localhost:9000/"))
-            + "short-url/"
             + str(obj.key)
         )
 

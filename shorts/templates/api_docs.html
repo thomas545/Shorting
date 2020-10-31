@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+API Docs
+{% endblock %}
+
+
+{% block content %}
+    <h3>- introduction:</h3>
+    <p class="discription"> &emsp; &emsp; Free Short URL is simple and fast URL shortener, 
+        Use our API URL Shortener to create a shortened link making it easy to remember.
+    </p> <hr>
+    <p class="endpoint"> &emsp; API Endpoint: https://cuturls.live/api-v1/short-url/</p>
+    <p class="endpoint" style="width: 200px;"> &emsp; Method: POST</p>
+    <p class="endpoint" style="width: 200px;"> &emsp; Request:</p>
+    <div class="endpoint" style="margin-left: 60px;">
+        <p> &emsp;
+            { <br>
+            &emsp; &emsp; &emsp; "original_url": "https://www.example.com/" <br>
+            &emsp; } 
+            <br>
+        </p>
+    </div> <br>
+    <p class="endpoint" style="width: 200px;"> &emsp;Response:</p>
+    <div class="endpoint" style="margin-left: 60px; margin-bottom: 200px;">
+        <p> &emsp;
+            { <br>
+            &emsp; &emsp; &emsp; "original_url": "https://www.example.com/" <br>
+            &emsp; &emsp; &emsp; "key": "xxxxxxxx", <br>
+            &emsp; &emsp; &emsp; "full_url": "https://cuturls.live/key" <br>
+            &emsp; } 
+            <br>
+        </p>
+    </div>
+{% endblock %}

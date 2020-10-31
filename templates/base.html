@@ -4,9 +4,21 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% endblock %}</title>
+  <meta property="og:title" content="Free Short URL">
+  <meta name="description" property="og:description" 
+        content="FRee Short URL is a url shortener to reduce a long link. 
+          Use our tool to shorten links and then share them, 
+          in addition you can monitor traffic statistics.">
+  <meta property="og:image" content="{% static 'favicon.png' %}">
+  <meta property="og:image:alt" content="Free Short URL">
+  <meta property="og:url" content="https://cuturls.live/">
+  <meta name="twitter:card" value="summary">
+
   {% include "base/css.html" %}
   <link rel="icon" href="{% static 'favicon.png' %}" type="image/png">
+  <script src="{% static 'style.js' %}"></script>
 </head>
 
 <body>
@@ -15,20 +27,24 @@
     </nav> -->
 
   {% if messages %}
-  <ul class="alert alert-danger my-2" role="alert">
+  <ul class="alert alert-danger my-2" style="text-align: center;" role="alert">
     {% for message in messages %}
     <li>{{ message }}</li>
     {% endfor %}
   </ul>
   {% endif %}
 
-  <a style="text-decoration: none;" href="/">
-    <h1 class="logo">Short URL</h1>
-  </a>
+  <div style="margin-left: 35%;" class="row">
+      <a class="logo col-md-6" style="text-decoration: none;" href="/">Free Short URL</a>
+      <a class="docs col-md-4" style="text-decoration: none;" href="{% url 'api_docs' %}">API Docs</a>
+    </div>
+
+  
 
   <div class="container">{% block content %} {% endblock %}</div>
 
-  <footer class="footer">
+
+  <div class="footer">
     <div class="container">
       <div class="row">
         <div class="col-xl-12 col-lg-12 text-center">
@@ -36,10 +52,10 @@
             <p>Copyright &copy; 2020, All Right Reserved <a href="/">Short URL</a></p>
           </div>
         </div>
-
       </div>
     </div>
-  </footer>
+  </div>
+
 
   {% include "base/js.html" %}
 </body>
