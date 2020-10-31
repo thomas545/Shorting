@@ -70,3 +70,7 @@ body: {"original_url": "url"}
 Endpoint: short-url/{key}
 Method: GET
 ```
+
+### Connecting To AWS Instance
+
+-> sudo ssh -i ShortingKeyPair.pem ubuntu@ec2-3-132-2-109.us-east-2.compute.amazonaws.com
